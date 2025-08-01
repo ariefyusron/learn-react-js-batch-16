@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 
 import Header from './components/Header'
+import { useCustomHook } from './hooks/useApp'
 
 const App = () => {
   const [todolist, setTodolist] = useState([])
@@ -9,6 +10,8 @@ const App = () => {
     name: '',
     age: ''
   })
+
+  const time = useCustomHook()
 
   const form = useRef(null)
 
@@ -55,7 +58,7 @@ const App = () => {
           count: {count}
         </button>
 
-
+        <p>{time}</p>
         <h1>Form</h1>
         
         <form
