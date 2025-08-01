@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 
 import Header from './components/Header'
+import Form from './components/Form'
 import { useCustomHook } from './hooks/useApp'
 
 const App = () => {
@@ -12,8 +13,6 @@ const App = () => {
   })
 
   const time = useCustomHook()
-
-  const form = useRef(null)
 
   useEffect(() => {
     console.log('test useEffect')
@@ -59,45 +58,10 @@ const App = () => {
         </button>
 
         <p>{time}</p>
-        <h1>Form</h1>
         
-        <form
-          ref={form}
-          onSubmit={e => {
-            e.preventDefault()
-            setInput({
-              name: e.target.name.value,
-              age: e.target.age.value
-            })
-            e.target.reset()
-          }}
-        >
-          <input
-            name="name"
-            placeholder='Masukkan Nama'
-          />
-          <br />
-
-          <input
-            name="age"
-            placeholder='Masukkan Umur'
-          />
-
-          <br />
-
-          <button
-            onClick={() => {
-              form.current.reset()
-            }}
-          >
-            Cancel
-          </button>
-          <button
-            type='submit'
-          >
-            Submit
-          </button>
-        </form>
+        <Form onSubmit={(e) => {
+          setInput(e)
+        }} />
 
         <p>{`Name: ${input.name}`}</p>
         <p>{`Age: ${input.age}`}</p>
