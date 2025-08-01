@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import Header from './components/Header'
 
@@ -9,6 +9,8 @@ const App = () => {
     name: '',
     age: ''
   })
+
+  const form = useRef(null)
 
   useEffect(() => {
     console.log('test useEffect')
@@ -57,7 +59,7 @@ const App = () => {
         <h1>Form</h1>
         
         <form
-          id="form"
+          ref={form}
           onSubmit={e => {
             e.preventDefault()
             setInput({
@@ -82,8 +84,7 @@ const App = () => {
 
           <button
             onClick={() => {
-              const form = document.getElementById('form')
-              form.reset()
+              form.current.reset()
             }}
           >
             Cancel
