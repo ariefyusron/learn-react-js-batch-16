@@ -1,13 +1,22 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import Header from './components/Header'
 
 const App = () => {
   const [todolist, setTodolist] = useState([])
+  const [count, setCount] = useState(0)
   const [input, setInput] = useState({
     name: '',
     age: ''
   })
+
+  useEffect(() => {
+    console.log('test useEffect')
+  }, [])
+
+  useEffect(() => {
+    console.log('count berubah')
+  },[count])
 
   const handleAdd = () => {
     console.log('click')
@@ -37,6 +46,12 @@ const App = () => {
         )}
 
         <button onClick={handleAdd}>Tambah</button>
+
+        <br />
+        <button
+          onClick={() => setCount(count + 1)}>
+          count: {count}
+        </button>
 
 
         <h1>Form</h1>
