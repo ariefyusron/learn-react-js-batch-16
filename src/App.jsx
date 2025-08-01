@@ -4,8 +4,10 @@ import Header from './components/Header'
 
 const App = () => {
   const [todolist, setTodolist] = useState([])
-  const [input, setInput] = useState('')
-  const [saveInput, setSaveInput] = useState('')
+  const [input, setInput] = useState({
+    name: '',
+    age: ''
+  })
 
   const handleAdd = () => {
     console.log('click')
@@ -16,18 +18,6 @@ const App = () => {
       },
       ...todolist
     ])
-  }
-
-  const renderText = () => {
-    if(saveInput === '') {
-      if(input === ''){
-        return 'Tidak ada input'
-      } else {
-        return 'typing...'
-      }
-    } else {
-      return saveInput
-    }
   }
 
   return (
@@ -50,34 +40,48 @@ const App = () => {
 
 
         <h1>Form</h1>
-        <input
-          placeholder='Masukkan Nama'
-          value={input}
-          onChange={(e) => {
-            setInput(e.target.value)
+        
+        <form
+          id="form"
+          onSubmit={e => {
+            e.preventDefault()
+            setInput({
+              name: e.target.name.value,
+              age: e.target.age.value
+            })
+            e.target.reset()
           }}
-        />
-        <button
-          onClick={() => {
-            setInput('')
-          }}
-          disabled={input === ''}
         >
-          Clear
-        </button>
+          <input
+            name="name"
+            placeholder='Masukkan Nama'
+          />
+          <br />
 
-        <br />
+          <input
+            name="age"
+            placeholder='Masukkan Umur'
+          />
 
-        <button
-          onClick={() => {
-            setSaveInput(input)
-            setInput('')
-          }}
-          disabled={input === ''}
-        >
-          Submit
-        </button>
-        <p>{renderText()}</p>
+          <br />
+
+          <button
+            onClick={() => {
+              const form = document.getElementById('form')
+              form.reset()
+            }}
+          >
+            Cancel
+          </button>
+          <button
+            type='submit'
+          >
+            Submit
+          </button>
+        </form>
+
+        <p>{`Name: ${input.name}`}</p>
+        <p>{`Age: ${input.age}`}</p>
       </div>
     </>
   )
