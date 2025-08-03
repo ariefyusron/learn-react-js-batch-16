@@ -1,5 +1,7 @@
 import { useNavigate, useLocation } from 'react-router'
 
+import './containerStyle.css'
+
 const Container = ({ children }) => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -28,12 +30,7 @@ const Container = ({ children }) => {
             onClick={() => {
               navigate(item.page)
             }}
-            style={
-              location.pathname === item.page ?
-                {
-                  backgroundColor: 'yellow'
-                } : {}
-            }
+            className={location.pathname === item.page ? 'button-active' : ''}
           >
             {item.label}
           </button>
