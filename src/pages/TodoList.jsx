@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router'
 
 import Header from '../components/Header'
 import Form from '../components/Form'
 import { useCustomHook } from '../hooks/useApp'
+import useTodolist from '../stores/useTodolist'
 
 const App = () => {
-  const [todolist, setTodolist] = useState([])
+  const navigate = useNavigate()
+  const todolist = useTodolist(state => state.list)
   const [count, setCount] = useState(0)
   const [input, setInput] = useState({
     name: '',
@@ -23,14 +26,7 @@ const App = () => {
   },[count])
 
   const handleAdd = () => {
-    console.log('click')
-    setTodolist([
-      {
-        desc: 'cuci motor',
-        status: 'todo'
-      },
-      ...todolist
-    ])
+    navigate('/create-todolist')
   }
 
   return (
