@@ -6,6 +6,10 @@ const WrapPage = () => {
   return (
     <Container>
       <Outlet />
+
+      <div>
+        <p>Footer</p>
+      </div>
     </Container>
   );
 }
