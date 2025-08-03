@@ -1,73 +1,28 @@
-import { useState, useEffect } from 'react'
+import { Routes, Route } from 'react-router'
 
-import Header from './components/Header'
-import Form from './components/Form'
-import { useCustomHook } from './hooks/useApp'
+import Home from './pages/Home'
+import Detail from './pages/Detail'
+import TodoList from './pages/TodoList'
+
+import WrapPage from './WrapPage'
+
 
 const App = () => {
-  const [todolist, setTodolist] = useState([])
-  const [count, setCount] = useState(0)
-  const [input, setInput] = useState({
-    name: '',
-    age: ''
-  })
-
-  const time = useCustomHook()
-
-  useEffect(() => {
-    console.log('test useEffect')
-  }, [])
-
-  useEffect(() => {
-    console.log('count berubah')
-  },[count])
-
-  const handleAdd = () => {
-    console.log('click')
-    setTodolist([
-      {
-        desc: 'cuci motor',
-        status: 'todo'
-      },
-      ...todolist
-    ])
-  }
-
   return (
-    <>
-      <Header />
-      <div>
-        <p>Hello World</p>
+    <Routes>
+      <Route path='/' element={<WrapPage />}>
+        <Route index element={<Home />} />
+        <Route path='detail' element={<Detail />} />
+        <Route path='todolist' element={<TodoList />} />
+      </Route>
 
-        {todolist.length === 0 ? (
-          <p>Belum ada todo</p>
-        ) : (
-          <ul>
-            {todolist.map((item, index) => (
-              <li key={index}>{`${item.desc} - ${item.status}`}</li>
-            ))}
-          </ul>
-        )}
-
-        <button onClick={handleAdd}>Tambah</button>
-
-        <br />
-        <button
-          onClick={() => setCount(count + 1)}>
-          count: {count}
-        </button>
-
-        <p>{time}</p>
-        
-        <Form onSubmit={(e) => {
-          setInput(e)
-        }} />
-
-        <p>{`Name: ${input.name}`}</p>
-        <p>{`Age: ${input.age}`}</p>
-      </div>
-    </>
-  )
+      {/* <Route path='home'>
+        <Route index element={<Home />} />
+        <Route path='detail' element={<Detail />} />
+        <Route path='todolist' element={<TodoList />} />
+      </Route> */}
+    </Routes>
+  );
 }
 
-export default App
+export default App;
