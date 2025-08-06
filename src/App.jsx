@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Detail from './pages/Detail'
 import TodoList from './pages/TodoList'
 import FormAddTodoList from './pages/FormAddTodoList'
+import PlaceholderApi from './pages/PlaceholderApi'
 
 import WrapPage from './WrapPage'
 
@@ -15,6 +16,7 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path='detail' element={<Detail />} />
         <Route path='todolist' element={<TodoList />} />
+        <Route path='placeholder' element={<PlaceholderApi />} />
       </Route>
 
       <Route path='create-todolist' element={<FormAddTodoList />} />

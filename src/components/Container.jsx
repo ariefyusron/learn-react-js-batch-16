@@ -18,6 +18,10 @@ const Container = ({ children }) => {
     {
       label: 'TodoList',
       page: '/todolist'
+    },
+    {
+      label: 'PlaceholderApi',
+      page: '/placeholder'
     }
   ]
 
