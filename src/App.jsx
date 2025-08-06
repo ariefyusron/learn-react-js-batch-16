@@ -20,6 +20,7 @@ const App = () => {
       </Route>
 
       <Route path='create-todolist' element={<FormAddTodoList />} />
+      <Route path='edit-todolist/:id' element={<FormAddTodoList isEdit />} />
 
       {/* <Route path='home'>
         <Route index element={<Home />} />

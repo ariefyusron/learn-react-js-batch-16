@@ -40,7 +40,17 @@ const App = () => {
         ) : (
           <ul>
             {todolist.map((item, index) => (
-              <li key={index}>{`${item.desc} - ${item.status}`}</li>
+              <li key={index}>
+                {`${item.desc} - ${item.status}`}
+                <button
+                  style={{ marginLeft: '12px' }}
+                  onClick={() => {
+                    navigate(`/edit-todolist/${index}`)
+                  }}
+                >
+                  Edit
+                </button>
+              </li>
             ))}
           </ul>
         )}
