@@ -22,6 +22,10 @@ const Container = ({ children }) => {
     {
       label: 'PlaceholderApi',
       page: '/placeholder'
+    },
+    {
+      label: 'Learn Typescript',
+      page: '/learn-typescript'
     }
   ]
 

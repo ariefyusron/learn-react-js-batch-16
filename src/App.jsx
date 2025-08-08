@@ -5,6 +5,7 @@ import Detail from './pages/Detail'
 import TodoList from './pages/TodoList'
 import FormAddTodoList from './pages/FormAddTodoList'
 import PlaceholderApi from './pages/PlaceholderApi'
+import LearnTypescript from './pages/LearnTypescript'
 
 import WrapPage from './WrapPage'
 
@@ -17,6 +18,7 @@ const App = () => {
         <Route path='detail' element={<Detail />} />
         <Route path='todolist' element={<TodoList />} />
         <Route path='placeholder' element={<PlaceholderApi />} />
+        <Route path='learn-typescript' element={<LearnTypescript />} />
       </Route>
 
       <Route path='create-todolist' element={<FormAddTodoList />} />

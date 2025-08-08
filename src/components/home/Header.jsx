@@ -1,11 +1,11 @@
 import useHomeStore from '../../stores/useHomeStore'
 
-const Header = () => {
+const Header = ({ title }) => {
   const count = useHomeStore((state) => state.count)
 
   return (
     <div>
-      <div>Header</div>
+      <div>{title}</div>
       <p>count: {count}</p>
     </div>
   );
