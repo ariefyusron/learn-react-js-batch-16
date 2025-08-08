@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router'
 
 import Container from './components/Container'
@@ -5,7 +6,9 @@ import Container from './components/Container'
 const WrapPage = () => {
   return (
     <Container>
-      <Outlet />
+      <Suspense fallback={<p>Loading....</p>}>
+        <Outlet />
+      </Suspense>
 
       <div>
         <p>Footer</p>

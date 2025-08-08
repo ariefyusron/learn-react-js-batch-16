@@ -1,35 +1,37 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router'
 
-import Home from './pages/Home'
-import Detail from './pages/Detail'
-import TodoList from './pages/TodoList'
-import FormAddTodoList from './pages/FormAddTodoList'
-import PlaceholderApi from './pages/PlaceholderApi'
-import LearnTypescript from './pages/LearnTypescript'
+const Home = lazy(() => import('./pages/Home'))
+const Detail = lazy(() => import('./pages/Detail'))
+const TodoList = lazy(() => import('./pages/TodoList'))
+const PlaceholderApi = lazy(() => import('./pages/PlaceholderApi'))
+const LearnTypescript = lazy(() => import('./pages/LearnTypescript'))
+const FormAddTodoList = lazy(() => import('./pages/FormAddTodoList'))
 
-import WrapPage from './WrapPage'
-
+const WrapPage = lazy(() => import('./WrapPage'))
 
 const App = () => {
   return (
-    <Routes>
-      <Route path='/' element={<WrapPage />}>
-        <Route index element={<Home />} />
-        <Route path='detail' element={<Detail />} />
-        <Route path='todolist' element={<TodoList />} />
-        <Route path='placeholder' element={<PlaceholderApi />} />
-        <Route path='learn-typescript' element={<LearnTypescript />} />
-      </Route>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route path='/' element={<WrapPage />}>
+          <Route index element={<Home />} />
+          <Route path='detail' element={<Detail />} />
+          <Route path='todolist' element={<TodoList />} />
+          <Route path='placeholder' element={<PlaceholderApi />} />
+          <Route path='learn-typescript' element={<LearnTypescript />} />
+        </Route>
 
-      <Route path='create-todolist' element={<FormAddTodoList />} />
-      <Route path='edit-todolist/:id' element={<FormAddTodoList isEdit />} />
+        <Route path='create-todolist' element={<FormAddTodoList />} />
+        <Route path='edit-todolist/:id' element={<FormAddTodoList isEdit />} />
 
-      {/* <Route path='home'>
-        <Route index element={<Home />} />
-        <Route path='detail' element={<Detail />} />
-        <Route path='todolist' element={<TodoList />} />
-      </Route> */}
-    </Routes>
+        {/* <Route path='home'>
+          <Route index element={<Home />} />
+          <Route path='detail' element={<Detail />} />
+          <Route path='todolist' element={<TodoList />} />
+        </Route> */}
+      </Routes>
+    </Suspense>
   );
 }
 
